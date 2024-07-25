@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>UI autocomplete</title>
+    <link rel="stylesheet" href="./libraries/jquery-ui.min.css" type="text/css">
+
+    <style type="text/css">
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        margin: 0;
+      }
+
+      .container {
+        width: 700px;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+
+      .form-group {
+        margin: 10px 0;
+      }
+
+      .form-group label {
+        display: block;
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .form-control {
+        width: 100%;
+        font-size: 20px;
+        padding: 5px;
+      }
+
+      .justify-content-end {
+        display: flex;
+        justify-content: end;
+      }
+
+      .btn {
+        font-size: 15px;
+        padding: 10px 20px;
+      }
+
+      #job-title{
+        font-size: 30px;
+        color: green;
+      }
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <form action="" method="">
+            <div class="form-group">
+                <label for="job">Job Title : <span id="job-title"></span></label>
+                <input type="text" name="job" id="job" class="form-control">
+            </div>
+            <div class="justify-content-end">
+                <input type="submit" name="" id="submit" class="btn">
+            </div>
+        </form>
+    </div>
+
+    <script src="./libraries/jquery-3.7.1.min.js" type="text/javascript"></script>
+    <script src="./libraries/jquery-ui.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            const positions = ['CEO', 'General Manager', 'Junior Developer', 'Engineer', 'Accountant', 'Senior Developer', 'Doctor', 'Student', 'Nurse', 'Finance Manager', 'Salary Man'];
+
+            $('#job').autocomplete({
+                source: positions
+            });
+
+            $('form').submit(function(e){
+                e.preventDefault();
+                const getjob = $('#job').val();
+                window.alert(`Your job title is ${getjob} ?`);
+                $('#job-title').text(getjob);
+            });
+
+        });
+    </script>
+</body>
+</html>
